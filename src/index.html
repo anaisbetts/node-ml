@@ -7,18 +7,15 @@
   <div id="App"></div>
 </body>
 
-<script>window.exports = module.exports</script>
-<script type="text/tsx">
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
+<script>
+import { ipcRenderer } from 'electron';
+import { initializeEvalHandler } from 'electron-remote';
 
-let render = () => {
-  const { App } = require('./app');
-  ReactDOM.render(<AppContainer><App /></AppContainer>, document.getElementById('App'));
-}
+window.console = Object.keys(console).reduce((acc, x) => {
+  acc[x] = (...args) => ipcRenderer.send(`console-${x}`, args);
+  return acc;
+}, {});
 
-render();
-if (module.hot) { module.hot.accept(render); }
+initializeEvalHandler();
 </script>
 </html>
