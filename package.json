@@ -3,7 +3,9 @@
   "productName": "node-ml",
   "version": "1.0.0",
   "description": "My Electron application description",
-  "main": "src/index.ts",
+  "bin": {
+    "node-ml": "cli.js"
+  },
   "scripts": {
     "start": "electron src/index.ts"
   },

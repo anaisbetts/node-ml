@@ -13,14 +13,13 @@ const args = yargs(process.argv.slice(2))
   .argv;
 
 app.on('ready', async () => {
-  if (!('_' in args) || args._.length !== 1) {
-    console.error('Interactive mode not yet supported, specify a script to run');
+  if (!('_' in args) || args._.length !== 1 || args._[0].length < 1) {
+    console.error('Interactive mode not yet supported, specify a script to run\n');
     app.quit();
     return;
   }
 
   const [ scriptToRun ] = args._;
-
   const { module } = await rendererRequireDirect(
     require.resolve('./renderer'),
     2 * 24 * 60 * 60 * 1000);
