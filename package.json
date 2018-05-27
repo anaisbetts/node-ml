@@ -1,49 +1,16 @@
 {
   "name": "node-ml",
-  "productName": "node-ml",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "version": "0.0.1",
+  "description": "node.js but with hardware-accelerated WebGL hardware GPU a",
   "bin": {
-    "node-ml": "cli.js"
+    "node-ml": "./src/cli.js"
   },
   "scripts": {
     "start": "electron src/index.ts"
   },
-  "keywords": [],
+  "keywords": ["machine-learning", "node", "tensorflow", "webgl", "gpu"],
   "author": "paulcbetts",
   "license": "MIT",
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {
-        "packageManager": "yarn"
-      },
-      "electronWinstallerConfig": {
-        "name": "node_ml"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "nodeml"
-      }
-    }
-  },
   "dependencies": {
     "debug": "^3.1.0",
     "electron-compile": "^6.4.2",
