@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as yargs from 'yargs';
 
 const args = yargs(process.argv.slice(2).map(x => x.replace('-nodeml', '')))
-  .usage('Usage: node-ml [script]')
+  .usage('Usage: node-gpu [script]')
   .describe('inspect', 'Opens a Devtools window to debug your script')
   .boolean('inspect')
   .describe('version', 'Display version information and exit')
@@ -21,7 +21,7 @@ app.on('ready', async () => {
 
   if (args['version']) {
     // tslint:disable-next-line:no-require-imports
-    console.log(`node-ml ${require('../package.json').version}\n`);
+    console.log(`node-gpu ${require('../package.json').version}\n`);
     console.log(`Electron Version Info:\n${JSON.stringify(process.versions, null, 2)}`);
     app.quit();
     return;

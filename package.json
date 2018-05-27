@@ -1,9 +1,9 @@
 {
-  "name": "node-ml",
+  "name": "node-gpu",
   "version": "0.0.1",
   "description": "node.js but with hardware-accelerated WebGL hardware GPU a",
   "bin": {
-    "node-ml": "./src/cli.js"
+    "node-gpu": "./src/cli.js"
   },
   "scripts": {
     "start": "electron src/index.ts"
