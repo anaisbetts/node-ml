@@ -4,12 +4,12 @@
   "description": "This example shows you how to train MNIST (using the layers API).",
   "main": "index.js",
   "scripts": {
-    "start": "node-ml ./index.js"
+    "start": "node-gpu ./index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs": "^0.11.2",
-    "node-ml": "^1.0.2"
+    "node-gpu": "^0.0.6"
   }
 }

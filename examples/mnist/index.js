@@ -144,7 +144,7 @@ async function load() {
   await data.load();
 }
 
-export async function run() {
+export async function main() {
   await load();
   await train();
   showPredictions();

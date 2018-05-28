@@ -20,8 +20,7 @@ function findPackageJson(initScript) {
 }
 
 function main() {
-  const initScript = require.resolve('./index')
-  const packageJson = findPackageJson(initScript);
+  const packageJson = findPackageJson(require.resolve('./es6-init.js'));
   const customCompilercPath = path.join(path.dirname(packageJson), '.compilerc');
   const defaultCompilercPath = require.resolve('../.compilerc');
 
@@ -31,6 +30,8 @@ function main() {
     fs.existsSync(customCompilercPath) ? customCompilercPath : defaultCompilercPath);
 
   initializeGlobalHooks(compilerHost, false);
+
+  const initScript = require.resolve('./index')
   require.main.require(initScript);
 }
 
