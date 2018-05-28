@@ -9,6 +9,10 @@ export async function run(file: string, shouldDebug: boolean, args: string[]) {
     wnd.setSize(1024, 768);
     wnd.show();
     wnd.webContents.openDevTools();
+
+    // NB: We need to wait a tick or else 'debugger;' on the opening line will
+    // be missed
+    await new Promise((res) => setTimeout(res, 1500));
   }
 
   try {
