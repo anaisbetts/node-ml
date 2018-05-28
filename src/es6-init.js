@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { app } = require('electron');
-const { init } = require('electron-compile');
+const { createCompilerHostFromConfigFileSync, initializeGlobalHooks } = require('electron-compile');
 
 function findPackageJson(initScript) {
   if (initScript === '/' || initScript.match(/^[A-Za-z]:$/)) {
@@ -19,23 +19,19 @@ function findPackageJson(initScript) {
   return findPackageJson(path.dirname(initScript));
 }
 
-/**
- * Some debugger environment reconstruct process argument and inject args ignoring original order,
- * extract to find out right path for init script.
- *
- */
-function getInitScriptPath() {
-  const rawArgv = process.argv.filter((x) => x.indexOf(`--inspect=`) === -1 && x.indexOf(`--debug-brk`))[2];
-  return path.resolve(rawArgv);
-}
-
 function main() {
   const initScript = require.resolve('./index.ts')
   const packageJson = findPackageJson(initScript);
-  const appPath = path.dirname(packageJson);
+  const compilercPath = require.resolve('../.compilerc');
 
   app.setName('node-gpu');
-  init(path.dirname(packageJson), initScript);
+
+  // NB: We do this because we want to force our built-in compilerc to be used,
+  // which isn't ideal - in the future we should precompile our app and let the
+  // developer choose.
+  const compilerHost = createCompilerHostFromConfigFileSync(compilercPath);
+  initializeGlobalHooks(compilerHost, false);
+  require.main.require(initScript);
 }
 
 main()
