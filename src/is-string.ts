@@ -17,7 +17,7 @@ function baseGetTag(value: any) {
   if (!(symToStringTag && symToStringTag in Object(value))) {
     return toString.call(value);
   }
-  const isOwn = hasOwnProperty.call(value, symToStringTag)
+  const isOwn = hasOwnProperty.call(value, symToStringTag);
   const tag = value[symToStringTag];
   let unmasked = false;
   try {

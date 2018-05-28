@@ -27,7 +27,7 @@ app.on('ready', async () => {
     return;
   }
 
-  if (!('_' in args) || args._.length !== 1 || args._[0].length < 1) {
+  if (!('_' in args) || args._.length < 1 || args._[0].length < 1) {
     console.error('Interactive mode not yet supported, specify a script to run\n');
     app.quit();
     return;
@@ -38,7 +38,7 @@ app.on('ready', async () => {
     require.resolve('./renderer'),
     2 * 24 * 60 * 60 * 1000);
 
-  await module.run(path.resolve(scriptToRun), dbg);
+  await module.run(path.resolve(scriptToRun), dbg, process.argv.slice(3));
 
   if (!dbg) {
     app.quit();

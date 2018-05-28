@@ -2,7 +2,7 @@ import { remote } from 'electron';
 
 import './console-redirect-renderer';
 
-export async function run(file: string, shouldDebug: boolean) {
+export async function run(file: string, shouldDebug: boolean, args: string[]) {
   if (shouldDebug) {
     const wnd = remote.getCurrentWindow();
 
@@ -15,7 +15,7 @@ export async function run(file: string, shouldDebug: boolean) {
     const mod = require(file);
 
     if (mod && 'main' in mod) {
-      await mod.main();
+      await mod.main(args);
     }
 
     if (shouldDebug) { console.log('(Module exited successfully)'); }
