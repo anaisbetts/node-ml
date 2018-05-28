@@ -20,7 +20,7 @@ function findPackageJson(initScript) {
 }
 
 function main() {
-  const initScript = require.resolve('./index.ts')
+  const initScript = require.resolve('./index')
   const packageJson = findPackageJson(initScript);
   const customCompilercPath = path.join(path.dirname(packageJson), '.compilerc');
   const defaultCompilercPath = require.resolve('../.compilerc');
