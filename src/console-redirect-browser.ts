@@ -1,5 +1,5 @@
 import { ipcMain } from 'electron';
-import * as isString from 'lodash.isstring';
+import { isString } from './is-string';
 
 let warningFound = false;
 Object.keys(console).forEach(k => {

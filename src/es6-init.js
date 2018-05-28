@@ -22,14 +22,14 @@ function findPackageJson(initScript) {
 function main() {
   const initScript = require.resolve('./index.ts')
   const packageJson = findPackageJson(initScript);
-  const compilercPath = require.resolve('../.compilerc');
+  const customCompilercPath = path.join(path.dirname(packageJson), '.compilerc');
+  const defaultCompilercPath = require.resolve('../.compilerc');
 
   app.setName('node-gpu');
 
-  // NB: We do this because we want to force our built-in compilerc to be used,
-  // which isn't ideal - in the future we should precompile our app and let the
-  // developer choose.
-  const compilerHost = createCompilerHostFromConfigFileSync(compilercPath);
+  const compilerHost = createCompilerHostFromConfigFileSync(
+    fs.existsSync(customCompilercPath) ? customCompilercPath : defaultCompilercPath);
+
   initializeGlobalHooks(compilerHost, false);
   require.main.require(initScript);
 }

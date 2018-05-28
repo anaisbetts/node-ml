@@ -1,7 +1,9 @@
 import { ipcRenderer } from 'electron';
 
 const origConsole = window.console;
-window.console = Object.keys(console).reduce((acc, x) => {
+
+// NB: Trick Typescript via the power of string concatenation
+window['con' + 'sole'] = Object.keys(console).reduce((acc, x) => {
   acc[x] = (...args: any[]) => {
     ipcRenderer.send(`console-${x}`, args);
     origConsole[x](...args);
