@@ -1,6 +1,6 @@
 {
   "name": "node-gpu",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "node.js but with hardware-accelerated WebGL hardware GPU a",
   "bin": {
     "node-gpu": "./src/cli.js"
