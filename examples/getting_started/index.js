@@ -47,7 +47,7 @@ async function myFirstTfjs() {
       model.predict(tf.tensor2d([20], [1, 1])));
 }
 
-export function run() {
+export function main() {
   return myFirstTfjs();
 }
 

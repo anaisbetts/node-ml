@@ -14,8 +14,8 @@ export async function run(file: string, shouldDebug: boolean) {
   try {
     const mod = require(file);
 
-    if (mod && 'run' in mod) {
-      await mod.run();
+    if (mod && 'main' in mod) {
+      await mod.main();
     }
 
     if (shouldDebug) { console.log('(Module exited successfully)'); }
