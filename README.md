@@ -1,6 +1,8 @@
 # node-gpu
 
-node-gpu is a version of node.js that runs your code in an node.js-based environment with WebGL enabled. This allows you to use web-based Machine Learning libraries such as Tensorflow.js, but access files directly via `fs`.
+node-gpu is a version of node.js that runs your code in an node.js-based environment with WebGL enabled. This allows you to use web-based Machine Learning libraries such as [Tensorflow.js](https://js.tensorflow.org/), but access files directly via node's `fs` module.
+
+While WebGL-based libraries are certainly not as performant as Python or C++ Tensorflow in GPU mode, it is *much much* easier to set up (especially on macOS), and still is reasonably performant for prototyping 
 
 ### Trying it out
 
@@ -12,7 +14,9 @@ npm install
 # The node-gpu command works just like the node command
 npx node-gpu ./index.js
 
-# Here, we've trained a CNN to recognize MNIST digits, to 96% accuracy
+# Here, we've trained a CNN to recognize MNIST digits, to 96% accuracy.
+# Running this in a pure CPU environment would take quite awhile, but node-gpu
+# can complete it in ~15sec depending on your machine.
 96/100 => 96% correct
 ```
 
