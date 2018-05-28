@@ -8,7 +8,7 @@ export async function run(file: string, shouldDebug: boolean) {
 
     wnd.setSize(1024, 768);
     wnd.show();
-    wnd.openDevTools();
+    wnd.webContents.openDevTools();
   }
 
   try {

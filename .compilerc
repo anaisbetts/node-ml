@@ -23,10 +23,8 @@
       },
       "application/javascript": {
         "presets": [
-          ["env", { "targets": { "electron": "1.6.0" } }],
-          "react"
+          ["env", { "targets": { "electron": "2.0.0" } }]
         ],
-        "plugins": ["transform-async-to-generator"],
         "sourceMaps": "inline"
       }
     },
@@ -51,10 +49,8 @@
       },
       "application/javascript": {
         "presets": [
-          ["env", { "targets": { "electron": "1.6.0" } }],
-          "react"
+          ["env", { "targets": { "electron": "2.0.0" } }]
         ],
-        "plugins": ["transform-async-to-generator"],
         "sourceMaps": "inline"
       }
     }
